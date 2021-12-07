@@ -1,0 +1,45 @@
+@import url("global.css");
+main {
+    width: 100%;
+    margin-top: 60px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+}
+
+.container_student {
+    width: 95%;
+    background-color: rgb(128, 4, 0);
+    display: flex;
+}
+
+.main_container {
+    width: 70%;
+    height: 700px;
+    margin: 20px;
+    background-color: rgb(124, 133, 125);
+}
+
+.secondary_container {
+    width: 30%;
+    height: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: rgb(124, 133, 125);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tutoring_container {
+    width: 100%;
+    height: 340px;
+    background-color: rgb(206, 24, 136);
+}
+
+.calendar_container {
+    width: 100%;
+    height: 340px;
+    background-color: rgb(75, 16, 238);
+}
