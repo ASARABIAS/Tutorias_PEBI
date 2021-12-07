@@ -2,44 +2,175 @@
 main {
     width: 100%;
     margin-top: 60px;
-    background-color: green;
+    background-color: #FFFFFF;
     display: flex;
     justify-content: center;
 }
 
 .container_student {
     width: 95%;
-    background-color: rgb(128, 4, 0);
+    background-color: #FFFFFF;
     display: flex;
 }
 
 .main_container {
     width: 70%;
-    height: 700px;
+    /*height: 700px;*/
     margin: 20px;
-    background-color: rgb(124, 133, 125);
+    background-color: #F7F8FA;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #707070;
+}
+
+.general_menu_title {
+    background-color: #FFFFFF;
+}
+
+.general_menu_title h3 {
+    padding: 15px;
+    color: #3C9B61;
+}
+
+.tab {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #707070;
+    border-bottom: 1px solid #707070;
+}
+
+.tab_title {
+    width: 200px;
+    border-right: 1px solid #707070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab_title h3 {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.active {
+    color: #393939;
+}
+
+.deactivate {
+    color: #3C9B61;
+}
+
+.my_tutorials {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tutorial_container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #707070;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+}
+
+.tutorial_container_coumn_1 {
+    width: 80%;
+}
+
+.tutorial_container_coumn_1 h3 {
+    padding-bottom: 10px;
+    color: #3C9B61;
+}
+
+.tutorial_container_coumn_2 {
+    width: 20%;
+    align-items: center;
+    display: flex;
+}
+
+.tutorial_container_coumn_2 h4 {
+    color: #3C9B61;
+}
+
+.tutorials_browser {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.btn_nage {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_nage div {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .secondary_container {
     width: 30%;
-    height: 700px;
+    /* height: 700px;*/
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 20px;
-    background-color: rgb(124, 133, 125);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .tutoring_container {
     width: 100%;
-    height: 340px;
-    background-color: rgb(206, 24, 136);
+    display: flex;
+    flex-direction: column;
+}
+
+.container_title {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #707070;
+}
+
+.container_title h3 {
+    color: #3C9B61;
+}
+
+.container_body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-bottom: 1px solid #707070;
+    border-left: 1px solid #707070;
+    border-right: 1px solid #707070;
+}
+
+.name_tutoring {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.name_tutoring img {
+    margin-right: 10px;
+    width: 30px;
 }
 
 .calendar_container {
+    margin-top: 25px;
     width: 100%;
-    height: 340px;
-    background-color: rgb(75, 16, 238);
+    /*height: 340px;*/
+    display: flex;
+    flex-direction: column;
 }

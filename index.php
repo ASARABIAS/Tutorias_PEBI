@@ -25,7 +25,7 @@
           <!--Login-->
           <form action="student.php" method="POST" class="formulario__login">
             <img src="IMG/upc.png" alt="">
-            <h2>Iniciar Sesión</h2>
+            <h2>Iniciar Cesion</h2>
             <div class="credenciales">
               <label for="">Correo</label>
               <input type="email" name="email" placeholder="Correo Electronico">
