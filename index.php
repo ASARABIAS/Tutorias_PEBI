@@ -23,7 +23,7 @@
       <div class="login_box">
         <div class="contenedor__login-register">
           <!--Login-->
-          <form action="student.php" method="POST" class="formulario__login">
+          <form action="Tools/Backend/login.php" method="POST" class="formulario__login">
             <img src="IMG/upc.png" alt="">
             <h2>Iniciar Cesion</h2>
             <div class="credenciales">

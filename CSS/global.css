@@ -71,12 +71,14 @@ body {
 
 .menu .list-container ul {
     display: flex;
+    justify-content: center;
 }
 
 .menu .list-container ul li {
     list-style: none;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .btn_user_accion {
@@ -105,6 +107,20 @@ body {
 
 .btn-menu>.fa-bars {
     display: none;
+}
+
+.btn_user {
+    display: flex;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_user img {
+    margin-left: 10px;
 }
 
 @media only screen and (max-width:900px) {
