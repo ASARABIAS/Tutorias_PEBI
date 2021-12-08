@@ -14,21 +14,24 @@ if (isset($_POST)) {
 
         $id_login = $login->fetch_assoc()['id'];
 
-        $person = $conn->query("SELECT * FROM `student` WHERE `user_id_user` LIKE '$id_login' ");
+        $person = $conn->query("SELECT COUNT(*) total FROM `student` WHERE `id_user` LIKE '$id_login' ");
+        $name = "";
+        $case = 0; //studen=1 teacher=2 admini=3
 
-        $name="";
-        if ($person) {
-            $name=$person->fetch_assoc()['name'];
-        }else{
-            $person = $conn->query("SELECT * FROM `administrator` WHERE `id_user` LIKE '$id_login' ");
-            if($person){
-                $name=$person->fetch_assoc()['name'];
-            }else{
-                $person = $conn->query("SELECT * FROM `teacher` WHERE `id_user` LIKE '$id_login' ");
-                $name=$person->fetch_assoc()['name'];
+        $users="";
+        if ($person->fetch_assoc()['total']==1) {
+            $users="`student`";
+        } else {
+            $person = $conn->query("SELECT COUNT(*) total FROM `administrator` WHERE `id_user` LIKE '$id_login' ");
+            if ($person->fetch_assoc()['total']==1) {
+                $users="`administrator`";
+            } else {
+                $users="`teacher`";
             }
         }
-
+        
+        $person = $conn->query("SELECT * FROM $users WHERE `id_user` LIKE '$id_login' ");
+         $name = $person->fetch_assoc()['name'];
 
         $_SESSION['usuario'] = [
             'id_user' => $login->fetch_assoc()['id'],
@@ -36,8 +39,19 @@ if (isset($_POST)) {
             'password' => $password,
             'name' => $name,
         ];
-
-        header('location: ../../student.php');
+         switch ($users) {
+            case "`student`":
+                header('location: ../../student.php');
+                break;
+             case "`teacher`":
+                header('location: ../../teacher.php');
+                break;
+             case "`administrator`":
+                header('location: ../../administrator.php');
+                break;
+         }
+       
+        
     } else {
         $_SESSION['error_login'] = "login incorrecto";
         echo '<script type="text/javascript">
