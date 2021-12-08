@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+  header('Location: index.php');
+} else {
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- hola como vamos-->
@@ -109,17 +116,17 @@
 
           <div class="tutorial_container">
  
-          <form action="/my-handling-form-page" method="post">
+          <form action="/my-handling-form-page" method="POST">
                 <ul>
                 <li>
                 <h3>INFORMACION DE LA TUTORIA </h3>
                 </li>
                 <li>
-                <label for="name">Nombre: </label>
+                <label>Nombre: </label>
               <input type="text" name="nombre" required>
               </li>
                 <li>
-                <label for="name">Programa:</label>
+                <label >Programa:</label>
               <select name="programas" >
                   <option> Ingenieria de sistemas</option>
                   <option> Ingenieria ambiental y sanitaria</option>
@@ -131,11 +138,11 @@
                 </select>
                 </li>
                 <li>
-                <label for="name">Descripcion temas:</label>
+                <label>Descripcion temas:</label>
                 <textarea name="texto" placeholder="Descripcion"></textarea>
                 </li>
                 <li>
-                <label for="name">Tutor asignado:</label>
+                <label>Tutor asignado:</label>
               <select name="programas" >
                   <option> Miguel rincon</option>
                   <option> darwin navarro</option>
@@ -143,54 +150,36 @@
                 </select>
                 </li>
                 <li>
-                <label for="name">Horario:</label>
+                <label>Horario:</label>
                 <input type="radio"  class="selected" name="presencial" value="presencial" required> presencial
                 <input type="radio" class="selected"  name="virtual" value="virtual" required> virtual 
-                </li>
+                </li>      
                 <li>
-                <label for="name">Dia:</label>
-                <input type="checkbox" class="selected" name="lunes" value="lunes" required> lunes
-                <input type="checkbox" class="selected" name="martes" value="martes" required> martes
-                <input type="checkbox" class="selected" name="miercoles" value="miercoles" required> miercoles
-                <input type="checkbox" class="selected" name="jueves" value="jueves" required> jueves
+                <label></label>  
+                <a href="https://calendar.google.com/calendar/u/0/r/settings/createcalendar?cid=cjkyOWhjZzF0MHFpdDNjbmM5Nzg3cGJraWtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&pli=1">Click aqui! , Crea el horario en Google calendar y captura el link</a>
                </li>
                 <li>
-                <label for="name"></label>
-                <input type="checkbox" class="selected" name="viernes" value="viernes" required> viernes
-                <input type="checkbox" class="selected" name="sabado" value="sabado" required> sabado
-                <input type="checkbox" class="selected" name="domingo" value="domingo" required> domingo 
-                </li>
-                <li>
-                <label for="name">Hora:</label>
-                <input type="time"  class="time" name="inicio" value="inicio" required> Inicio   
-               </li>
-                <li>
-                <label for="name"></label>
-                <input type="time" class="time"  name="fin" value="fin" required> Fin 
-                </li>
-                <li>
-                <label for="name">Salon: </label>
-              <input type="text" name="salon" required>
-              </li>
-              <li>
-                <label for="name">Link tutoria: </label>
+                <label >Link tutoria: </label>
               <input type="text" name="link" required>
               </li>
               <li>
-              <label for="name"> </label>
+                <label >Salon: </label>
+              <input type="text" name="salon" required>
+              </li>
+              <li>
+              <label> </label>
               <button  type="reset" class="boton">Crear tutoria</button>
               </li>
                 </ul>
                 </form>
                 
             <div class="tutorial_container_coumn_1">
-           <div class="container mt-5 special">
-            <form method="POST" action="recibe_imgs.php" class="login-form" enctype="multipart/form-data">
+           <div class="special">
+            <form class="login-form" >
             <div class="row">
-            <img src="" id= height="70px" width="70px" > 
-                <img src="" class="dropimage" width="30px" height="30px">
+                <div src="" class="dropimage">
                         <input title="HacerClick aqui" type="file" class="foto" name="foto1" id="foto1" required="true">
-                
+                </div> 
             </div>  
             </form>
             </div>
@@ -199,7 +188,6 @@
         </div>
         </div>
       </div>
-
     </div>
 
   </main>
@@ -231,3 +219,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 
 </html>
+<?php
+  mysqli_close($conn);
+}
+?>
