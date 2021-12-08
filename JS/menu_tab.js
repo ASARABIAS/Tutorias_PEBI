@@ -2,7 +2,7 @@ wait = 1500;
 
 function Opciones(index) {
     $.ajax({
-        url: "Tools/Backend/actives_tutoring.php",
+        url: "Tools/student/actives_tutoring.php",
         //data: Data,
         type: 'POST',
         beforeSend: function() {
