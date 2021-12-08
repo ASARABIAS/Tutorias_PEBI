@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+  header('Location: index.php');
+} else {
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- hola como vamos-->
@@ -53,6 +61,7 @@
         <!-- Contenedor Tutorias -->
         <div class="my_tutorials">
 
+        
           <div class="tutorial_container">
 
             <div class="tutorial_container_coumn_1">
@@ -137,3 +146,7 @@
 </body>
 
 </html>
+<?php
+  mysqli_close($conn);
+}
+?>
