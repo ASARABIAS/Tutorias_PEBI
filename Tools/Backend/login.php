@@ -29,10 +29,11 @@ if (isset($_POST)) {
                 $users="`teacher`";
             }
         }
-        
         $person = $conn->query("SELECT * FROM $users WHERE `id_user` LIKE '$id_login' ");
         $name = $person->fetch_assoc()['name'];
 
+
+        
         $_SESSION['usuario'] = [
             'id_user' => $login->fetch_assoc()['id'],
             'email' => $email,

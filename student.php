@@ -41,25 +41,25 @@ if (!isset($_SESSION['usuario'])) {
         <div class="tab">
 
           <div class="tab_title">
-            <h3 class="active">Mis Tutorías</h3>
+            <h3 class="active"onclick="Opciones(0);">Mis Tutorías</h3>
           </div>
 
           <div class="tab_title">
-            <h3 class="deactivate">Tutoría Activas</h3>
+            <h3 class="deactivate" onclick="Opciones(1);">Tutoría Activas</h3>
           </div>
 
           <div class="tab_title">
-            <h3 class="deactivate">Solicitar tutoría</h3>
+            <h3 class="deactivate" onclick="Opciones(2);">Solicitar tutoría</h3>
           </div>
 
           <div class="tab_title">
-            <h3 class="deactivate">Tutoría en petición </h3>
+            <h3 class="deactivate" onclick="Opciones(3);">Tutoría en petición </h3>
           </div>
 
         </div>
 
         <!-- Contenedor Tutorias -->
-        <div class="my_tutorials">
+        <div class="my_tutorials" id="my_tutorials">
 
         
           <div class="tutorial_container">
@@ -94,41 +94,6 @@ if (!isset($_SESSION['usuario'])) {
           </div>
 
         </div>
-
-        <div class="tutorials_browser">
-          <div class="home">
-            <img src="IMG/casa.png" alt="">
-          </div>
-
-          <div class="btn_nage">
-            <img src="IMG/atras.png" alt="">
-            <div>
-              <p> 1 de 4 </p>
-            </div>
-            <img src="IMG/flecha.png" alt="">
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Contenedor parte derecha -->
-      <div class="secondary_container">
-
-        <!-- Contenedor de las tutorias activas -->
-        <div class="tutoring_container">
-          <?php
-          include "Tools/global structure/active_tutorials.php";
-          ?>
-        </div>
-
-        <!-- Contenedor del cronograma -->
-        <div class="calendar_container">
-
-          <?php
-          include "Tools/global structure/calendar.php";
-          ?>
-
-        </div>
       </div>
     </div>
 
@@ -140,7 +105,9 @@ if (!isset($_SESSION['usuario'])) {
 
   <!-- Scripts -->
   <!-- Se Incluyen los Archivos de tipo JavaScrip | INICIO -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/35db202371.js"></script>
+  <script src="JS/menu_tab.js"></script>
   <!-- Scripts -->
   <!-- Se Incluyen los Archivos de tipo JavaScrip | FIN -->
 </body>
