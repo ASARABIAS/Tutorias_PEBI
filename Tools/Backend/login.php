@@ -16,8 +16,6 @@ if (isset($_POST)) {
 
         $person = $conn->query("SELECT COUNT(*) total FROM `student` WHERE `id_user` LIKE '$id_login' ");
         $name = "";
-        $case = 0; //studen=1 teacher=2 admini=3
-
         $users="";
         if ($person->fetch_assoc()['total']==1) {
             $users="`student`";
@@ -32,7 +30,6 @@ if (isset($_POST)) {
         $person = $conn->query("SELECT * FROM $users WHERE `id_user` LIKE '$id_login' ");
         $name = $person->fetch_assoc()['name'];
 
-
         
         $_SESSION['usuario'] = [
             'id_user' => $login->fetch_assoc()['id'],
@@ -40,6 +37,8 @@ if (isset($_POST)) {
             'password' => $password,
             'name' => $name,
         ];
+        $_SESSION['id_user'] = $id_login;
+
          switch ($users) {
             case "`student`":
                 header('location: ../../student.php');
