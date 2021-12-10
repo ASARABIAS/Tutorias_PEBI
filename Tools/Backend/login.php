@@ -34,7 +34,7 @@ if (isset($_POST)) {
          $name = $person->fetch_assoc()['name'];
 
         $_SESSION['usuario'] = [
-            'id_user' => $login->fetch_assoc()['id'],
+            'id_user' => $id_login,
             'email' => $email,
             'password' => $password,
             'name' => $name,
