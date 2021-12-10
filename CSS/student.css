@@ -96,8 +96,16 @@ main {
     width: 20%;
     align-items: center;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .tutorial_container_coumn_2 h4 {
     color: #3C9B61;
+}
+
+.tutorial_container_coumn_2 h5 {
+    color: #0080FA;
+    font-size: 16px;
+    cursor: pointer;
 }

@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once 'Tools/Backend/conection.php';
-$id_student = $_SESSION['usuario']['id_user'];
+require_once '../Backend/conection.php';
+$id_user = $_SESSION['usuario']['id_user'];
+$id_student=$conn->query("SELECT * FROM `student` WHERE `id_user` LIKE '$id_user'")->fetch_assoc()['id'];
 $result = $conn->query("SELECT * FROM `studens_has_tutoring` WHERE `id_student` LIKE '$id_student'");
 while ($row = $result->fetch_assoc()) {
 

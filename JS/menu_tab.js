@@ -38,3 +38,26 @@ function menu_tab(index) {
     }
 
 }
+
+function register_student_request_tutoring(id_tutoring, id_student) {
+    let Data = {
+        "id_tutoring": id_tutoring,
+        "id_student": id_student
+    }
+
+    $.ajax({
+        url: "Tools/Backend/register_studens_has_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
+            }, wait);
+        },
+    });
+
+    Opciones(1);
+}

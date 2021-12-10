@@ -61,6 +61,7 @@ if (!isset($_SESSION['usuario'])) {
           <!-- Contenedor Tutorias -->
           <div class="secondary_container" id="secondary_container">
             <?php
+            require_once 'Tools/Backend/conection.php';
             $id_student = $_SESSION['usuario']['id_user'];
             $result = $conn->query("SELECT * FROM `studens_has_tutoring` WHERE `id_student` LIKE '$id_student'");
             while ($row = $result->fetch_assoc()) {
