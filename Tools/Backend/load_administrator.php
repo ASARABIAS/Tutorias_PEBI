@@ -80,7 +80,7 @@ if(isset($_SESSION['usuario'])){
               } 
                 $us= $conn->query("SELECT * FROM tutoring WHERE `name` LIKE '$nombret' ");
                $idt = $us->fetch_assoc()['id'];
-               $sq= "INSERT INTO schedule(id,opening_date,closing_date,url_calendar,salon,id_tutoring) VALUES (default,NOW(),'null', '$link','null','$idt')";   
+               $sq= "INSERT INTO schedule(id,opening_date,closing_date,url_calendar,salon,type_schedule,id_tutoring) VALUES (default,NOW(),'null', '$link','null','$opcionh','$idt')";   
              if (mysqli_query($conn, $sq)) {
                   header("location:../../administrator.php");
                 } else {
