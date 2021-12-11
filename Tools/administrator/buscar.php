@@ -84,7 +84,7 @@ if (isset($_SESSION['usuario'])) {
                <td  align="center" id="identificacions"><?php echo($resul['identificacion']); ?></td>
                <td  align="center"><?php echo($resul['name']); ?></td>
                <td  align="center"><?php echo($result['name']); ?></td>
-               <td  align="center"><button style="cursor:pointer;" type="submit" onclick='new_estudiante_a_tutoria("<?php echo($_SESSION['name_tutoring']); ?>","<?php echo($resul['identificacion']); ?>"); return null;' value="Enviar" class="boton">Añadir</button></td>
+               <td  align="center"><h4 onclick='new_estudiante_a_tutoria("<?php echo($_SESSION['name_tutoring']); ?>","<?php echo($resul['identificacion']); ?>"); return null;'   style="padding-right: 5px;cursor: pointer;color: #0080FA;">Añadir</h4> </td>
                         
            </tr> 
    

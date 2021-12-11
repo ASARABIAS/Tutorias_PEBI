@@ -1,13 +1,6 @@
-wait = 1500;
-let array_btn_tab = ["btn_0", "btn_1", "btn_2", "btn_3","btn_4"];
-$(document).ready(function () {
-    $('#lista1').val(1);
-    recargarLista();
+wait = 1700;
+let array_btn_tab = ["btn_0", "btn_1", "btn_2", "btn_3"];
 
-    $('#lista1').change(function () {
-        recargarLista();
-    });
-})
 
 
 function new_tutoria() {
@@ -187,7 +180,7 @@ function solicitudes_tutoria(name) {
         "nametutori": name,
     }
     $.ajax({
-        url: "Tools/Backend/edit_tutoring.php",
+        url: "Tools/administrator/request_tutoring.php",
         data: Data,
         type: 'POST',
         beforeSend: function () {
@@ -195,11 +188,32 @@ function solicitudes_tutoria(name) {
         },
         success: function (data) {
             setTimeout(function () {
-               
+                $('#vista2').html(data);
             }, wait);
         },
     });
-    Opciones(5);
+}
+
+function aprobar(id,idt,name) {
+    
+    let Data = {
+        "id_estudentt": id,
+        "id_tutoriatt": idt,
+    }
+    $.ajax({
+        url: "Tools/Backend/load_administrator_student.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function () {
+            $('#vista').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (data) {
+            setTimeout(function () {
+
+            }, wait);
+        },
+    });
+    activas(name);
 }
 
 function eliminar_estudiante(name,id) {
@@ -299,6 +313,7 @@ function activas(name) {
             }, wait);
         },
     });
+    
 }
 function Opciones_administrator(index) {
     urln = "";

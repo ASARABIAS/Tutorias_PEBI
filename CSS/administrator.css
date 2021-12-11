@@ -221,7 +221,7 @@ form {
   .labelre {
     /* Tamaño y alineación uniforme */
     display: inline-block;
-    width: 70%;
+    width: 100%;
     text-align: left;
   }
   

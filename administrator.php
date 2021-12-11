@@ -51,11 +51,11 @@ if (!isset($_SESSION['usuario'])) {
 
 
             <div class="tab_title">
-              <h3 class="deactivate" id="btn_3" onclick="Opciones(3);">Seguimiento</h3>
+              <h3 class="deactivate" id="btn_2" onclick="Opciones(3);">Seguimiento</h3>
             </div>
 
             <div class="tab_title">
-              <h3 class="deactivate" id="btn_4" onclick="Opciones(4);">Requerimientos</h3>
+              <h3 class="deactivate" id="btn_3" onclick="Opciones(4);">Requerimientos</h3>
             </div>
 
           </div>
@@ -71,6 +71,17 @@ if (!isset($_SESSION['usuario'])) {
               }
               if (isset($_SESSION['usuario'])) {
                 $result = $conn->query("SELECT * FROM `tutoring`");
+                if(!isset($result)){
+                  ?>
+                  <div class="tutorial_container">
+                    <div class="tutorial_container_coumn_1">
+                      <h3 id="nombre_tu"> ¡Informacion! </h3>
+                      <p>Aun no hay tutorias activas en el sistemas </p>
+                    </div>
+                   
+                  </div>
+                  <?php
+                }
                 while ($row = $result->fetch_assoc()) {
 
                   $id_tutoring = $row['id'];
