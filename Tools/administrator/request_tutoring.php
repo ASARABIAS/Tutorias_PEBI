@@ -15,35 +15,35 @@
         require_once '../Backend/conection.php';
     }
     if (isset($_SESSION['usuario'])) {
-
         $buscar = $_POST["nametutori"];
 
-        $resul = $conn->query("SELECT * FROM `student` WHERE `identificacion` LIKE '$buscar' ")->fetch_assoc();
-        $idd = $resul['id_career'];
-        $result = $conn->query("SELECT * FROM `career` WHERE `id` LIKE '$idd' ")->fetch_assoc();
+        $resul = $conn->query("SELECT * FROM `tutoring` WHERE `name` LIKE '$buscar' ")->fetch_assoc();
+        $idd = $resul['id'];
+        $result = $conn->query("SELECT * FROM `student_request_tutoring` ");
+        if (isset($result)) {
+            while ($fila = $result->fetch_assoc()) {
+                if ($fila['id_tutoring'] == $idd) {
+                    $idstudent = $fila['id_student'];
+                    $resu = $conn->query("SELECT * FROM `student` WHERE `id` LIKE '$idstudent' ")->fetch_assoc();
+                    $idcar = $resu['id_career'];
+                    $ids = $resu['identificacion'];
+                    $names = $resu['name'];
+                    $careerconsul = $conn->query("SELECT * FROM `career` WHERE `id` LIKE '$idcar' ")->fetch_assoc();
+                    $nameca = $careerconsul['name'];
+    ?>
+                    <tr>
+                        <td align="center" id="identificacions"><?php echo ($ids); ?></td>
+                        <td align="center"><?php echo ($names); ?></td>
+                        <td align="center"><?php echo ($nameca); ?></td>
+                        <td align="center"> <h4  onclick='aprobar("<?php echo ($idstudent); ?>","<?php echo ($idd); ?>","<?php echo ($buscar); ?>"); return null;'  style="padding-right: 5px;cursor: pointer;color: #0080FA;">Añadir</h4> </td>
 
-        $re = $conn->query("SELECT * FROM `studens_has_tutoring`");
+                    </tr>
 
-        while ($fila = $re->fetch_assoc()) {
-        $vari = $_SESSION['idst'];
-        if ($fila['id_tutoring'] == $vari) {
-        $idstudent = $fila['id_student'];
-        $result = $conn->query("SELECT * FROM `student` WHERE `id` LIKE '$idstudent' ")->fetch_assoc();
-        $idcar = $result['id_career'];
-        $ids = $result['identificacion'];
-        $names = $result['name'];
-        $careerconsul = $conn->query("SELECT * FROM `career` WHERE `id` LIKE '$idcar' ")->fetch_assoc();
-        $nameca = $careerconsul['name'];
-        ?>
-        <tr>
-            <td><?php echo ($ids); ?></td>
-            <td><?php echo ($names); ?></td>
-            <td><?php echo ($nameca); ?></td>
-            <td> <button style="cursor:pointer;" type="submit" onclick='add_estudiante_us_tutoring("<?php echo ($nombre); ?>","<?php echo ($ids); ?>");' value="Enviar" class="boton">Eliminar</button></td>
-        </tr>
 
+    <?php
+                }
+            }
+        }
+    }
+    ?>
 </table>
-<?php
-
-    } // fin if 
-?>

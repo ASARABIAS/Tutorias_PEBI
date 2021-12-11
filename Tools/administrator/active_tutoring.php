@@ -5,6 +5,17 @@ if (!isset($conn)) {
 }
 if (isset($_SESSION['usuario'])) {
   $result = $conn->query("SELECT * FROM `tutoring`");
+  if(!isset($result)){
+    ?>
+    <div class="tutorial_container">
+      <div class="tutorial_container_coumn_1">
+        <h3 id="nombre_tu"> ¡Informacion! </h3>
+        <p>Aun no hay tutorias activas en el sistemas </p>
+      </div>
+     
+    </div>
+    <?php
+  }
   while ($row = $result->fetch_assoc()) {
 
     $id_tutoring = $row['id'];

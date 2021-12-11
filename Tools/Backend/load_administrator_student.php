@@ -14,6 +14,10 @@ if (isset($_SESSION['usuario'])) {
   $idestu = $_POST['identificacions'];
   $idestue = $_POST['identificacione'];
 
+  //aprobar en la tutoria
+  $idestudiante=$_POST['id_estudentt'];
+  $idtutoria=$_POST['id_tutoriatt'];
+
    if (isset($nombrecx) ){
      $sq = "INSERT INTO user(id,email,password) VALUES (default,'$emailcx', '$passwordcx')";
      if (mysqli_query($conn, $sq)) {
@@ -43,6 +47,15 @@ if (isset($_SESSION['usuario'])) {
     } else {
       echo "Error: " . $sqle . "<br>" . mysqli_error($conn);
     }
+   }else if(isset($idestudiante)){
+    
+    $sqla = "INSERT INTO studens_has_tutoring(id,id_student,id_tutoring) VALUES (default,'$idestudiante','$idtutoria')";
+    if (mysqli_query($conn, $sqla)) {
+    } else {
+      echo "Error: " . $sqla . "<br>" . mysqli_error($conn);
+    }
+    $sq = $conn->query("DELETE FROM `student_request_tutoring` WHERE `id_student` LIKE '$idestudiante' AND `id_tutoring` LIKE '$idtutoria'");
+  
    }else{
     $usa = $conn->query("SELECT * FROM student WHERE `identificacion` LIKE '$idestu' ");
     $idca = $usa->fetch_assoc()['id'];

@@ -21,7 +21,7 @@
           if (isset($_SESSION['usuario'])) {
             $id = $_SESSION['id_user'];
             $result = $conn->query("SELECT * FROM `career` WHERE `id_administrator` LIKE '$id' ");
-            var_dump($result);
+            
             while ($fila = $result->fetch_assoc()) {
               $idc = $fila['id'];
               $namec = $fila['name'];
@@ -90,3 +90,13 @@
     </ul>
   </form>
 </div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#lista1').val(1);
+    recargarLista();
+
+    $('#lista1').change(function () {
+        recargarLista();
+    });
+})
+</script>

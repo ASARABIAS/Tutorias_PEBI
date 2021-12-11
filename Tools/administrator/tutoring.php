@@ -53,7 +53,7 @@
         <li>
             <label></label>
         </li>
-        <li>
+        <li style="display:inline;">
             <h4>Tipo de horario: </h4>
             <label class="labelre"><?php echo ($tipoh); ?></label>
         </li>
@@ -116,7 +116,7 @@
                                     <td><?php echo ($ids); ?></td>
                                     <td><?php echo ($names); ?></td>
                                     <td><?php echo ($nameca); ?></td>
-                                    <td> <button style="cursor:pointer;" type="submit" onclick='eliminar_estudiante("<?php echo ($nombre); ?>","<?php echo ($ids); ?>");' value="Enviar" class="boton">Eliminar</button></td>
+                                    <td><h4 onclick='eliminar_estudiante("<?php echo ($nombre); ?>","<?php echo ($ids); ?>");'  style="padding-right: 5px;cursor: pointer;color: #0080FA;">Eliminar</h4></td>
                                 </tr>
 
                     <?php
@@ -152,10 +152,11 @@
             <label></label>
         </li>
         <li>
-        <button style="cursor:pointer;" type="submit" onclick='editar_tutoria("<?php echo ($nombre); ?>");' value="Enviar" class="boton">Editar tutoria</button>
-        <button style="cursor:pointer;" type="submit" onclick='solicitudes_tutoria("<?php echo ($nombre); ?>");' value="Enviar" class="boton">Solicitudes de tutorias</button>
-        <button style="cursor:pointer;" type="submit" onclick='deshabilitar_tutoria("<?php echo ($nombre); ?>");' value="Enviar" class="boton">deshabilitar tutoria</button>
-    </li>
+            <?php
+            $nombretuto=$_SESSION['name_tutoring'];
+            ?>
+       <button style="cursor:pointer;" type="submit" onclick='solicitudes_tutoria("<?php echo ($nombretuto); ?>");' value="Enviar" class="boton">Solicitudes a la tutoria</button>
+     </li>
     <li>
             <label></label>
         </li>
