@@ -139,6 +139,7 @@ main {
 #vista {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .tutoring_container {
