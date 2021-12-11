@@ -19,12 +19,38 @@ $teacher = $conn->query("SELECT * FROM `teacher` WHERE `id` LIKE '$id_teacher'")
 
 $schedule = $conn->query("SELECT * FROM `schedule` WHERE `id_tutoring` LIKE '$id_tutoring'")->fetch_assoc();
 
+$student_id = $conn->query("SELECT `id` FROM `student` WHERE `id_user` LIKE '$id_user'")->fetch_assoc()['id'];
+
+$studens_has_tutoring_total = $conn->query("SELECT  COUNT(*) total FROM `studens_has_tutoring` WHERE `id_student` LIKE '$student_id' AND `id_tutoring` LIKE '$id_tutoring'")->fetch_assoc()['total'];
+
 ?>
 <div class="container_open_my_tutoring">
 
     <div class="btn_open_my_tutoring">
-        <img src="IMG/chat.png" alt="" srcset="" style="cursor: pointer;">
-        <h4 style="color:#3C9B61;margin-left: 10px;cursor: pointer;">Darme de baja</h4>
+        <?php
+        if ($studens_has_tutoring_total == 0) {
+
+            $resgitrado_student_request_tutoring = $conn->query("SELECT COUNT(*) total FROM `student_request_tutoring` WHERE `id_tutoring` LIKE '$id_tutoring' AND `id_student` LIKE '$student_id'")->fetch_assoc()['total'];
+            if ($resgitrado_student_request_tutoring['total'] == 0) {
+        ?>
+                <h5 style="color:#0080FA ;cursor: pointer;" onclick="register_student_request_tutoring(<?php echo ($id_tutoring . ',' . $student_id); ?>);">Solicitar</h5>
+            <?php
+            } else {
+            ?>
+                <h4 style="color:#3C9B61 ;">En proceso</h4>
+                <h4 onclick="cancel_student_request_tutoring(<?php echo($id_tutoring);?>);" style="color:#3C9B61;margin-left: 10px;cursor: pointer;">Cancelar solicitud</h4>
+            <?php
+            }
+            ?>
+
+        <?php
+        } else {
+        ?>
+            <img src="IMG/chat.png" alt="" srcset="" style="cursor: pointer;" onclick="messenger();">
+            <h4 onclick="cancel_student_has_tutoring(<?php echo($id_tutoring);?>);" style="color:#3C9B61;margin-left: 10px;cursor: pointer;">Darme de baja</h4>
+        <?php
+        }
+        ?>
     </div>
 
     <div class="title_open_my_tutoring">
@@ -82,7 +108,7 @@ $schedule = $conn->query("SELECT * FROM `schedule` WHERE `id_tutoring` LIKE '$id
                 $file = $conn->query("SELECT * FROM `files` WHERE `id` LIKE '$id_files'")->fetch_assoc();
             ?>
                 <div style="width: 100%; padding: 10px;border-bottom: 1px solid #707070 ;">
-                    <h4 style="color:#3C9B61;"><?php echo ($file['name']); ?></h4>
+                    <h4 onclick="messenger();" style="color:#3C9B61; cursor: pointer;"><?php echo ($file['name']); ?></h4>
                 </div>
             <?php
 

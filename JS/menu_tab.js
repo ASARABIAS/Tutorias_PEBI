@@ -25,7 +25,6 @@ function menu_tab(index) {
             document.getElementById(array_btn_tab[i]).className = "deactivate";
         }
     }
-
     switch (index) {
         case 0:
             return "my_tutoring.php";
@@ -55,7 +54,7 @@ function register_student_request_tutoring(id_tutoring, id_student) {
         success: function(data) {
             setTimeout(function() {
                 alert(data);
-            }, wait);
+            }, wait + 500);
         },
     });
 
@@ -146,6 +145,60 @@ function open_my_tutoring(id_tutoring) {
         url: "Tools/student/open_my_tutoring.php",
         data: Data,
         type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                $('#secondary_container').html(data);
+            }, wait);
+        },
+    });
+}
+
+function cancel_student_request_tutoring(id_tutoring) {
+    let Data = {
+        "id_tutoring": id_tutoring
+    }
+    $.ajax({
+        url: "Tools/Backend/cancel_student_request_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
+            }, wait);
+        },
+    });
+    Opciones(1);
+}
+
+function cancel_student_has_tutoring(id_tutoring) {
+    let Data = {
+        "id_tutoring": id_tutoring
+    }
+    $.ajax({
+        url: "Tools/Backend/cancel_student_has_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
+            }, wait);
+        },
+    });
+    Opciones(1);
+}
+
+function messenger() {
+    $.ajax({
+        url: "Tools/student/messenger.php",
         beforeSend: function() {
             $('#secondary_container').html("<img src='IMG/loding.gif'/>");
         },
