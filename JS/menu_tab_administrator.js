@@ -13,19 +13,19 @@ function new_tutoria() {
         "docentes": document.getElementById("docentes").value,
         "link": document.getElementById("link").value,
         "salon": document.getElementById("salon").value,
-        "asig_tutoring": document.getElementById("asig_tutoring").value,
+        "asig_tutoring": document.getElementById("lista2").value,
     }
 
     $.ajax({
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
             }, wait);
         },
     });
@@ -43,12 +43,12 @@ function new_programa() {
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-              
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
@@ -66,12 +66,12 @@ function new_asignatura() {
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
@@ -94,12 +94,12 @@ function new_estudiante_docente() {
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-              
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
@@ -114,27 +114,27 @@ function new_estudiante_us_tutoria(name) {
         "programas_ex": document.getElementById("programas_ex").value,
         "email_completox": document.getElementById("email_completox").value,
         "password_completox": document.getElementById("password_completox").value,
-       
+
     }
 
     $.ajax({
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
     activas(name);
 }
 
-function new_estudiante_a_tutoria(name,id) {
- 
+function new_estudiante_a_tutoria(name, id) {
+
     let Data = {
         "identificacions": id,
     }
@@ -142,12 +142,12 @@ function new_estudiante_a_tutoria(name,id) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
@@ -155,7 +155,7 @@ function new_estudiante_a_tutoria(name,id) {
 }
 
 function editar_tutoria(name) {
-    
+
     let Data = {
         "nametutoria": name,
     }
@@ -163,19 +163,19 @@ function editar_tutoria(name) {
         url: "Tools/Backend/edit_tutoring.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
 }
 
 function solicitudes_tutoria(name) {
-    
+
     let Data = {
         "nametutori": name,
     }
@@ -183,19 +183,19 @@ function solicitudes_tutoria(name) {
         url: "Tools/administrator/request_tutoring.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista2').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
                 $('#vista2').html(data);
             }, wait);
         },
     });
 }
 
-function aprobar(id,idt,name) {
-    
+function aprobar(id, idt, name) {
+
     let Data = {
         "id_estudentt": id,
         "id_tutoriatt": idt,
@@ -204,11 +204,11 @@ function aprobar(id,idt,name) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -216,8 +216,8 @@ function aprobar(id,idt,name) {
     activas(name);
 }
 
-function eliminar_estudiante(name,id) {
- 
+function eliminar_estudiante(name, id) {
+
     let Data = {
         "identificacione": id,
     }
@@ -225,12 +225,12 @@ function eliminar_estudiante(name,id) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
@@ -240,11 +240,11 @@ function eliminar_estudiante(name,id) {
 function Opciones(index) {
     $.ajax({
         url: "Tools/administrator/" + menu_tab(index),
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
                 $('#vista').html(data);
             }, wait);
         },
@@ -273,16 +273,17 @@ function menu_tab(index) {
             return "requirement.php";
         case 5:
             return "tutoring.php";
-        
+
     }
 
 }
+
 function rever() {
     $.ajax({
         url: "Tools/administrator/buscar.php",
         type: "POST",
         data: "palabra=" + $('#palabraa').val(),
-        success: function (r) {
+        success: function(r) {
             $('#ver').html(r);
         }
     });
@@ -293,7 +294,7 @@ function recargarLista() {
         url: "Tools/Backend/cargaroptions_administrator.php",
         type: "POST",
         data: "carrera=" + $('#lista1').val(),
-        success: function (r) {
+        success: function(r) {
             $('#select2lista').html(r);
         }
     });
@@ -304,17 +305,18 @@ function activas(name) {
         url: "Tools/administrator/tutoring.php",
         type: 'POST',
         data: "nombre_tutoria=" + name,
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (r) {
-            setTimeout(function () {
+        success: function(r) {
+            setTimeout(function() {
                 $('#vista').html(r);
             }, wait);
         },
     });
-    
+
 }
+
 function Opciones_administrator(index) {
     urln = "";
     switch (index) {
@@ -322,11 +324,11 @@ function Opciones_administrator(index) {
             $.ajax({
                 url: "Tools/administrator/" + urln + ".php",
                 type: 'POST',
-                beforeSend: function () {
+                beforeSend: function() {
                     $('#vista').html("<img src='IMG/loding.gif'/>");
                 },
-                success: function (data) {
-                    setTimeout(function () {
+                success: function(data) {
+                    setTimeout(function() {
                         $('#vista').html(data);
                     }, wait);
                 },
@@ -348,11 +350,11 @@ function Opciones_administrator(index) {
     $.ajax({
         url: "Tools/administrator/" + urln + ".php",
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
                 $('#vista').html(data);
             }, wait);
         },
@@ -365,7 +367,7 @@ function administrator() {
 
 function validarForm(formulario) {
     if (formulario.palabra.value.length == 0) { //¿Tiene 0 caracteres?
-        formulario.palabra.focus();  // Damos el foco al control
+        formulario.palabra.focus(); // Damos el foco al control
         alert('Debes rellenar este campo'); //Mostramos el mensaje
         return false;
     } //devolvemos el foco  
@@ -381,12 +383,12 @@ function register_requeriment(id_request_tutoring) {
         url: "Tools/Backend/register_request.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
-               
+        success: function(data) {
+            setTimeout(function() {
+
             }, wait);
         },
     });
