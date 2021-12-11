@@ -46,7 +46,7 @@ function register_student_request_tutoring(id_tutoring, id_student) {
     }
 
     $.ajax({
-        url: "Tools/Backend/register_studens_has_tutoring.php",
+        url: "Tools/Backend/register_student_request_tutoring.php",
         data: Data,
         type: 'POST',
         beforeSend: function() {
@@ -60,4 +60,79 @@ function register_student_request_tutoring(id_tutoring, id_student) {
     });
 
     Opciones(1);
+}
+
+//register_request_tutoring
+
+function register_request_tutoring() {
+
+    let Data = {
+        "id_course": document.getElementById("id_course").value,
+        "description": document.getElementById("description").value,
+        "theme_tutoring": document.getElementById("theme_tutoring").value,
+        "concept": document.getElementById("concept").value,
+    }
+
+    $.ajax({
+        url: "Tools/Backend/register_request_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
+            }, wait);
+        },
+    });
+    Opciones(2);
+}
+
+function close_cancelled() {
+    Opciones(0);
+}
+
+
+//tutoring_on_request
+
+function register_request(id_request_tutoring) {
+    let Data = {
+        "id_request_tutoring": id_request_tutoring
+    }
+    $.ajax({
+        url: "Tools/Backend/register_request.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
+            }, wait);
+        },
+    });
+    Opciones(3);
+}
+
+function cancel_request(id_request_tutoring) {
+    alert(id_request_tutoring);
+    let Data = {
+        "id_request_tutoring": id_request_tutoring
+    }
+    $.ajax({
+        url: "Tools/Backend/cancel_request.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                alert(data);
+            }, wait);
+        },
+    });
+    Opciones(3);
 }

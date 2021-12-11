@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-session_start();
 require_once '../Backend/conection.php';
 $id_user = $_SESSION['usuario']['id_user'];
 $id_student = $conn->query("SELECT * FROM `student` WHERE `id_user` LIKE '$id_user'")->fetch_assoc()['id_career'];
