@@ -61,7 +61,7 @@ if (isset($_SESSION['usuario'])) {
                             <input type="text" id="password_completox" name="password_completox" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                         </li>
                         <li>
-                        <button type="submit" onclick='new_estudiante_us_tutoria("<?php echo($_SESSION['name_tutoring']); ?>"); return null;' value="Enviar" class="boton">Agregar</button>
+                        <button type="submit" onclick='new_estudiante_us_tutoria("<?php echo($_SESSION['name_tutoring']); ?>");' value="Enviar" class="boton">Agregar</button>
                         </li>
                     </ul>
                 </form>

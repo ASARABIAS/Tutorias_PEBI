@@ -1,4 +1,4 @@
-wait = 1200;
+wait = 1500;
 let array_btn_tab = ["btn_0", "btn_1", "btn_2", "btn_3","btn_4"];
 $(document).ready(function () {
     $('#lista1').val(1);
@@ -159,6 +159,47 @@ function new_estudiante_a_tutoria(name,id) {
         },
     });
     activas(name);
+}
+
+function editar_tutoria(name) {
+    
+    let Data = {
+        "nametutoria": name,
+    }
+    $.ajax({
+        url: "Tools/Backend/edit_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function () {
+            $('#vista').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (data) {
+            setTimeout(function () {
+               
+            }, wait);
+        },
+    });
+}
+
+function solicitudes_tutoria(name) {
+    
+    let Data = {
+        "nametutori": name,
+    }
+    $.ajax({
+        url: "Tools/Backend/edit_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function () {
+            $('#vista2').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (data) {
+            setTimeout(function () {
+               
+            }, wait);
+        },
+    });
+    Opciones(5);
 }
 
 function eliminar_estudiante(name,id) {

@@ -148,7 +148,21 @@
         </li>
         </form>
         </li>
+        <li>
+            <label></label>
+        </li>
+        <li>
+        <button style="cursor:pointer;" type="submit" onclick='editar_tutoria("<?php echo ($nombre); ?>");' value="Enviar" class="boton">Editar tutoria</button>
+        <button style="cursor:pointer;" type="submit" onclick='solicitudes_tutoria("<?php echo ($nombre); ?>");' value="Enviar" class="boton">Solicitudes de tutorias</button>
+        <button style="cursor:pointer;" type="submit" onclick='deshabilitar_tutoria("<?php echo ($nombre); ?>");' value="Enviar" class="boton">deshabilitar tutoria</button>
+    </li>
+    <li>
+            <label></label>
+        </li>
 
+    <li>
+            <div id="vista2"></div>
+        </li>
 
     </ul>
 </div>

@@ -42,16 +42,13 @@ if (!isset($_SESSION['usuario'])) {
           <div class="tab">
 
             <div class="tab_title">
-              <h3 class="active" id="btn_0" onclick="Opciones(0);">Tutoría Activas</h3>
+              <h3 class="active" id="btn_0" onclick="administrator();">Tutoría Activas</h3>
             </div>
 
             <div class="tab_title">
               <h3 class="deactivate" id="btn_1" onclick="Opciones(1);">Nueva Tutorías</h3>
             </div>
 
-            <div class="tab_title">
-              <h3 class="deactivate" id="btn_2" onclick="Opciones(2);">Asignaciones</h3>
-            </div>
 
             <div class="tab_title">
               <h3 class="deactivate" id="btn_3" onclick="Opciones(3);">Seguimiento</h3>
