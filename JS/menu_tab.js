@@ -245,5 +245,4 @@ function open_tutoring_teacher(id_tutoring) {
             }, wait);
         },
     });
-    Opciones(3);
 }
