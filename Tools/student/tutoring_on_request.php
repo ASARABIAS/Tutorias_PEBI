@@ -40,7 +40,7 @@ while ($row = $result->fetch_assoc()) {
             <div style="height: 8px;">
             </div>
             <div style="width: 100%;display: flex;flex-direction: row; justify-content: space-between;">
-                <h5 onclick="register_request(<?php echo ($id); ?>);">DARME DE BAJA</h5>
+                <h5 onclick="cancel_request(<?php echo ($id_request_tutoring); ?>);">DARME DE BAJA</h5>
                 /
                 <h5>COMPARTIR</h5>
             </div>

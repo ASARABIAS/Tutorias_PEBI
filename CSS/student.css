@@ -171,3 +171,31 @@ main {
     color: #FFFFFF;
     background-color: #3C9B61;
 }
+
+
+/*open_my_tutoring*/
+
+.container_open_my_tutoring {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container_open_my_tutoring h3 {
+    color: #3C9B61;
+}
+
+.btn_open_my_tutoring {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.title_open_my_tutoring {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

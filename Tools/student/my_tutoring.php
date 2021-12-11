@@ -17,7 +17,7 @@ while ($row = $result->fetch_assoc()) {
 ?>
   <div class="tutorial_container">
     <div class="tutorial_container_coumn_1">
-      <h3><?php echo($result_tutoring['name']); ?> </h3>
+      <h3 onclick="open_my_tutoring(<?php echo($id_tutoring);?>);" style="cursor: pointer;"><?php echo($result_tutoring['name']); ?> </h3>
       <p><?php echo($result_tutoring['description']); ?> </p>
     </div>
     <div class="tutorial_container_coumn_2">

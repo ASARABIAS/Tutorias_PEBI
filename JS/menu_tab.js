@@ -117,7 +117,6 @@ function register_request(id_request_tutoring) {
 }
 
 function cancel_request(id_request_tutoring) {
-    alert(id_request_tutoring);
     let Data = {
         "id_request_tutoring": id_request_tutoring
     }
@@ -135,4 +134,25 @@ function cancel_request(id_request_tutoring) {
         },
     });
     Opciones(3);
+}
+
+//open_my_tutoring
+
+function open_my_tutoring(id_tutoring) {
+    let Data = {
+        "id_tutoring": id_tutoring
+    }
+    $.ajax({
+        url: "Tools/student/open_my_tutoring.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                $('#secondary_container').html(data);
+            }, wait);
+        },
+    });
 }

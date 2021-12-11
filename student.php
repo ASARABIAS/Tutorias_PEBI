@@ -56,6 +56,7 @@ if (!isset($_SESSION['usuario'])) {
               <h3 class="deactivate" id="btn_3" onclick="Opciones(3);">Tutoría en petición </h3>
             </div>
 
+
           </div>
 
           <!-- Contenedor Tutorias -->
@@ -77,7 +78,7 @@ if (!isset($_SESSION['usuario'])) {
             ?>
               <div class="tutorial_container">
                 <div class="tutorial_container_coumn_1">
-                  <h3><?php echo ($result_tutoring['name']); ?> </h3>
+                  <h3 onclick="open_my_tutoring(<?php echo($id_tutoring);?>);" style="cursor: pointer;"><?php echo ($result_tutoring['name']); ?> </h3>
                   <p><?php echo ($result_tutoring['description']); ?> </p>
                 </div>
                 <div class="tutorial_container_coumn_2">
