@@ -25,7 +25,7 @@ function new_tutoria() {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
@@ -48,7 +48,7 @@ function new_programa() {
         },
         success: function (data) {
             setTimeout(function () {
-              
+
             }, wait);
         },
     });
@@ -71,7 +71,7 @@ function new_asignatura() {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
@@ -99,7 +99,7 @@ function new_estudiante_docente() {
         },
         success: function (data) {
             setTimeout(function () {
-              
+
             }, wait);
         },
     });
@@ -114,7 +114,7 @@ function new_estudiante_us_tutoria(name) {
         "programas_ex": document.getElementById("programas_ex").value,
         "email_completox": document.getElementById("email_completox").value,
         "password_completox": document.getElementById("password_completox").value,
-       
+
     }
 
     $.ajax({
@@ -126,15 +126,15 @@ function new_estudiante_us_tutoria(name) {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
     activas(name);
 }
 
-function new_estudiante_a_tutoria(name,id) {
- 
+function new_estudiante_a_tutoria(name, id) {
+
     let Data = {
         "identificacions": id,
     }
@@ -147,7 +147,7 @@ function new_estudiante_a_tutoria(name,id) {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
@@ -155,7 +155,7 @@ function new_estudiante_a_tutoria(name,id) {
 }
 
 function editar_tutoria(name) {
-    
+
     let Data = {
         "nametutoria": name,
     }
@@ -168,14 +168,14 @@ function editar_tutoria(name) {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
 }
 
 function solicitudes_tutoria(name) {
-    
+
     let Data = {
         "nametutori": name,
     }
@@ -194,8 +194,8 @@ function solicitudes_tutoria(name) {
     });
 }
 
-function aprobar(id,idt,name) {
-    
+function aprobar(id, idt, name) {
+
     let Data = {
         "id_estudentt": id,
         "id_tutoriatt": idt,
@@ -216,8 +216,8 @@ function aprobar(id,idt,name) {
     activas(name);
 }
 
-function eliminar_estudiante(name,id) {
- 
+function eliminar_estudiante(name, id) {
+
     let Data = {
         "identificacione": id,
     }
@@ -230,13 +230,67 @@ function eliminar_estudiante(name,id) {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
     activas(name);
 }
 
+function ver_programas() {
+
+    $.ajax({
+        url: "Tools/administrator/programas_tracing.php",
+        type: 'POST',
+        beforeSend: function () {
+            $('#tracing').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (data) {
+            setTimeout(function () {
+                $('#tracing').html(data);
+            }, wait);
+        },
+    });
+}
+function ver_cursos(id) {
+
+    let Data = {
+        "idcarrer": id,
+    }
+    $.ajax({
+        url: "Tools/administrator/cursos_tracing.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function () {
+            $('#tracing2').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (data) {
+            setTimeout(function () {
+                $('#tracing2').html(data);
+            }, wait);
+        },
+    });
+}
+
+function ver_tutorias(id) {
+
+    let Data = {
+        "idcu": id,
+    }
+    $.ajax({
+        url: "Tools/administrator/tutorias_tracing.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function () {
+            $('#tracing3').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (data) {
+            setTimeout(function () {
+                $('#tracing3').html(data);
+            }, wait);
+        },
+    });
+}
 function Opciones(index) {
     $.ajax({
         url: "Tools/administrator/" + menu_tab(index),
@@ -269,11 +323,13 @@ function menu_tab(index) {
             return "new_tutoring.php";
         case 2:
             return "request_tutoring.php";
+        case 3:
+            return "tracing.php";
         case 4:
             return "requirement.php";
         case 5:
             return "tutoring.php";
-        
+
     }
 
 }
@@ -313,7 +369,24 @@ function activas(name) {
             }, wait);
         },
     });
-    
+
+}
+
+function activas2(name) {
+    $.ajax({
+        url: "Tools/administrator/tutoring.php",
+        type: 'POST',
+        data: "nombre_tutoria=" + name,
+        beforeSend: function () {
+            $('#tracing4').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function (r) {
+            setTimeout(function () {
+                $('tracing4').html(r);
+            }, wait);
+        },
+    });
+
 }
 function Opciones_administrator(index) {
     urln = "";
@@ -386,7 +459,7 @@ function register_requeriment(id_request_tutoring) {
         },
         success: function (data) {
             setTimeout(function () {
-               
+
             }, wait);
         },
     });
