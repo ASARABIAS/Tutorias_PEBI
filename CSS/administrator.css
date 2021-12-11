@@ -78,12 +78,24 @@ main {
     margin-bottom: 10px;
     background-color: #FFFFFF;
 }
-
-.tutorial_container_coumn_1 {
-    width: 40%;
+.tutorial_containert {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
 }
 
 
+.tutorial_container_coumn_1 {
+    width: 80%;
+    cursor: pointer;
+}
+
+.tutorial_container_coumn_1 h3 {
+    padding-bottom: 10px;
+    color: #3C9B61;
+}
 
 .tutorial_container_coumn_2 h4 {
     color: #3C9B61;
@@ -175,6 +187,18 @@ form {
     border: 1px solid #CCC;
     border-radius: 1em;
   }
+
+  #buscar {
+    /* Centrar el formulario en la página */
+    display: inline-block;
+    text-align: right;
+    width: 40%;
+    /* Esquema del formulario */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+  }
+  
   
   ul {
     list-style: none;
@@ -184,6 +208,7 @@ form {
   
   form li + li {
     margin-top: 1em;
+    
   }
   
   label {
@@ -308,4 +333,46 @@ form {
 .foto{
     width:100%;
     height:100%;
+}
+
+/*
+	Color fondo: #632432;
+	Color header: 246355;
+	Color borde: 0F362D;
+	Color iluminado: 369681;
+*/
+
+
+#main-container{
+	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+table{
+	background-color: white;
+	text-align: center;
+	border-collapse: collapse;
+	width: 80%;
+    
+}
+
+th, td{
+	padding: 10px;
+}
+
+thead{
+	background-color: #3C9B61;
+	border-bottom: solid 5px #0F362D;
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #3C9B61;
+	color: white;
 }

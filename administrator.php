@@ -5,128 +5,120 @@ if (!isset($_SESSION['usuario'])) {
 } else {
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<!-- hola como vamos-->
+  <!DOCTYPE html>
+  <html lang="en">
+  <!-- hola como vamos-->
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PEBI | Administrador</title>
-  <link rel="stylesheet" href="CSS/administrator.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEBI | Administrador</title>
+    <link rel="stylesheet" href="CSS/administrator.css">
 
-  
-</head>
 
-<body>
-  <header id="header">
-    <!-- Se incluye la barra de navegacion | INICIO -->
-    <?php
-    include 'Tools/global structure/navigation_bar.php';
-    ?>
-    <!-- Se incluye la barra de navegacion | INICIO -->
-  </header>
-  <main>
+  </head>
 
-    <!-- Contenedor de todo -->
-    <div class="container_teacher">
+  <body>
+    <header id="header">
+      <!-- Se incluye la barra de navegacion | INICIO -->
+      <?php
+      include 'Tools/global structure/navigation_bar.php';
+      ?>
+      <!-- Se incluye la barra de navegacion | INICIO -->
+    </header>
+    <main>
 
-      <!-- Contenedor del Menú General -->
-      <div class="main_container">
+      <!-- Contenedor de todo -->
+      <div class="container_teacher">
 
-        <div class="general_menu_title">
-          <h3>Menú General</h3>
-        </div>
+        <!-- Contenedor del Menú General -->
+        <div class="main_container">
 
-        <div class="tab">
-
-          <div class="tab_title">
-            <h3 class="active" onclick="Opciones_administrator(0);">Tutoría Activas</h3>
+          <div class="general_menu_title">
+            <h3>Menú General</h3>
           </div>
 
-          <div class="tab_title">
-            <h3 class="deactivate" onclick="Opciones_administrator(1);">Nueva Tutorías</h3>
-          </div>
+          <div class="tab">
 
-          <div class="tab_title">
-            <h3 class="deactivate" onclick="Opciones_administrator(2);">Asignaciones</h3>
-          </div>
+            <div class="tab_title">
+              <h3 class="active" id="btn_0" onclick="Opciones(0);">Tutoría Activas</h3>
+            </div>
 
-          <div class="tab_title" >
-            <h3 class="deactivate" onclick="Opciones_administrator(3);">Seguimiento</h3>
-          </div>
+            <div class="tab_title">
+              <h3 class="deactivate" id="btn_1" onclick="Opciones(1);">Nueva Tutorías</h3>
+            </div>
 
-          <div class="tab_title" >
-            <h3 class="deactivate" onclick="Opciones_administrator(4);">Requerimientos</h3>
-          </div>
+            <div class="tab_title">
+              <h3 class="deactivate" id="btn_2" onclick="Opciones(2);">Asignaciones</h3>
+            </div>
 
-        </div>
+            <div class="tab_title">
+              <h3 class="deactivate" id="btn_3" onclick="Opciones(3);">Seguimiento</h3>
+            </div>
+
+            <div class="tab_title">
+              <h3 class="deactivate" id="btn_4" onclick="Opciones(4);">Requerimientos</h3>
+            </div>
+
+          </div>
 
           <!-- Contenedor nueva Tutoria -->
-        <div class="new_tutorials" >
+          <div class="new_tutorials">
 
-          <div class="tutorial_container" id="vista" >
-           <?php
-           include "Tools/administrator/active_tutoring.php";
-            //  if(!isset($_GET['case'])){
-            //   include "Tools/administrator/active_tutoring.php";
-            //     }else{
-            //       switch ($_GET['case']) {
-            //         case 'active_tutoring':
-            //           include "Tools/administrator/active_tutoring.php";
-            //           break;
-            //           case 'new_tutoring':
-            //             include "Tools/administrator/new_tutoring.php";
-            //           break;
-            //           case 'a':
-                          
-            //           break;
-            //           case 'requirement':
-            //             include "Tools/administrator/requirement.php";
-            //           break;
-                    
-            //       }
-                  
-            //     }
-             
-           ?>
-           </div>
+            <div id="vista">
+              <?php
+              if (!isset($conn)) {
+                session_start();
+                require_once 'Tools/Backend/conection.php';
+              }
+              if (isset($_SESSION['usuario'])) {
+                $result = $conn->query("SELECT * FROM `tutoring`");
+                while ($row = $result->fetch_assoc()) {
 
-         </div>
-    </div>
+                  $id_tutoring = $row['id'];
 
-  </main>
+                  $result_tutoring = $conn->query("SELECT * FROM `tutoring` WHERE `id` LIKE '$id_tutoring'")->fetch_assoc();
 
-  
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
-    img.onchange = function(e){
-      var inputfile = this, reader = new FileReader();
-      reader.onloadend = function(){
-        inputfile = 'src('+reader.result+')';
-      }
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  });
-});
-</script>
+                  $id_teacher = $result_tutoring['id_teacher'];
 
-  <?php
-  include 'Tools/global structure/footer.php';
-  ?>
+                  $result_teacher = $conn->query("SELECT * FROM `teacher` WHERE `id` LIKE '$id_teacher'")->fetch_assoc();
 
-  <!-- Scripts -->
-  <!-- Se Incluyen los Archivos de tipo JavaScrip | INICIO -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/35db202371.js"></script>
-  <script src="JS/menu_tab.js"></script>
-  <!-- Scripts -->
-  <!-- Se Incluyen los Archivos de tipo JavaScrip | FIN -->
-</body>
+              ?>
+                  <div class="tutorial_container">
+                    <div class="tutorial_container_coumn_1">
+                      <h3 id="nombre_tu" onclick='activas("<?php echo ($row['name']); ?>");'><?php echo ($row['name']); ?> </h3>
+                      <p><?php echo ($row['description']); ?> </p>
+                    </div>
+                    <div class="tutorial_container_coumn_2">
+                      <h4><?php echo ($result_teacher['name']); ?> </h4>
+                    </div>
+                  </div>
+              <?php
+                }
+              }
+              ?>
+            </div>
 
-</html>
+          </div>
+        </div>
+
+    </main>
+
+    <?php
+    include 'Tools/global structure/footer.php';
+    ?>
+
+    <!-- Scripts -->
+    <!-- Se Incluyen los Archivos de tipo JavaScrip | INICIO -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/35db202371.js"></script>
+    <script src="JS/menu_tab_administrator.js"></script>
+    <!-- Scripts -->
+    <!-- Se Incluyen los Archivos de tipo JavaScrip | FIN -->
+  </body>
+
+  </html>
 <?php
   mysqli_close($conn);
 }

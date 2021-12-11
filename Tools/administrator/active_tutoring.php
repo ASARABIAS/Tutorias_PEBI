@@ -1,50 +1,31 @@
+<?php
+if (!isset($conn)) {
+  session_start();
+  require_once 'Tools/Backend/conection.php';
+}
+if (isset($_SESSION['usuario'])) {
+  $result = $conn->query("SELECT * FROM `tutoring`");
+  while ($row = $result->fetch_assoc()) {
 
-<div class="tutorial_container">
-            <div class="tutorial_container_coumn_1">
-              <h3>Calculo Integral </h3>
-              <p>Solución de integrales indefinidas directas, método de sustitución y métodos de integración.</p>
-            </div>
-            <div class="tutorial_container_coumn_2">
-              <h4>Ing. Carlos jalabe </h4>
-            </div>
-          </div>
+    $id_tutoring = $row['id'];
 
-          <div class="tutorial_container">
-            <div class="tutorial_container_coumn_1">
-              <h3>Calculo Integral </h3>
-              <p>Solución de integrales indefinidas directas, método de sustitución y métodos de integración.</p>
-            </div>
-            <div class="tutorial_container_coumn_2">
-              <h4>Ing. Carlos jalabe </h4>
-            </div>
-          </div>
+    $result_tutoring = $conn->query("SELECT * FROM `tutoring` WHERE `id` LIKE '$id_tutoring'")->fetch_assoc();
 
-          <div class="tutorial_container">
-            <div class="tutorial_container_coumn_1">
-              <h3>Calculo Integral </h3>
-              <p>Solución de integrales indefinidas directas, método de sustitución y métodos de integración.</p>
-            </div>
-            <div class="tutorial_container_coumn_2">
-              <h4>Ing. Carlos jalabe </h4>
-            </div>
-          </div>
+    $id_teacher = $result_tutoring['id_teacher'];
 
-        </div>
+    $result_teacher = $conn->query("SELECT * FROM `teacher` WHERE `id` LIKE '$id_teacher'")->fetch_assoc();
 
-        
-        <div class="tutorials_browser">
-          <div class="home">
-            <img src="IMG/casa.png" alt="">
-          </div>
-
-          <div class="btn_nage">
-            <img src="IMG/atras.png" alt="">
-            <div>
-              <p> 1 de 4 </p>
-            </div>
-            <img src="IMG/flecha.png" alt="">
-          </div>
- </div>
- 
-          
-          
+?>
+    <div class="tutorial_container">
+      <div class="tutorial_container_coumn_1">
+        <h3 id="nombre_tu" onclick='activas("<?php echo ($row['name']); ?>");'><?php echo ($row['name']); ?> </h3>
+        <p><?php echo ($row['description']); ?> </p>
+      </div>
+      <div class="tutorial_container_coumn_2">
+        <h4><?php echo ($result_teacher['name']); ?> </h4>
+      </div>
+    </div>
+<?php
+  }
+}
+?>
