@@ -63,7 +63,8 @@ if (!isset($_SESSION['usuario'])) {
           <div class="secondary_container" id="secondary_container">
             <?php
             require_once 'Tools/Backend/conection.php';
-            $id_student = $_SESSION['usuario']['id_user'];
+            $id_user = $_SESSION['usuario']['id_user'];
+            $id_student = $conn->query("SELECT * FROM `student` WHERE `id_user` LIKE '$id_user'")->fetch_assoc()['id'];
             $result = $conn->query("SELECT * FROM `studens_has_tutoring` WHERE `id_student` LIKE '$id_student'");
             while ($row = $result->fetch_assoc()) {
 
@@ -78,7 +79,7 @@ if (!isset($_SESSION['usuario'])) {
             ?>
               <div class="tutorial_container">
                 <div class="tutorial_container_coumn_1">
-                  <h3 onclick="open_my_tutoring(<?php echo($id_tutoring);?>);" style="cursor: pointer;"><?php echo ($result_tutoring['name']); ?> </h3>
+                  <h3 onclick="open_my_tutoring(<?php echo ($id_tutoring); ?>);" style="cursor: pointer;"><?php echo ($result_tutoring['name']); ?> </h3>
                   <p><?php echo ($result_tutoring['description']); ?> </p>
                 </div>
                 <div class="tutorial_container_coumn_2">
@@ -88,6 +89,7 @@ if (!isset($_SESSION['usuario'])) {
             <?php
             }
             ?>
+
           </div>
         </div>
       </div>
