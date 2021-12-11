@@ -209,3 +209,40 @@ function messenger() {
         },
     });
 }
+
+// teacher
+
+function Opciones_teacher() {
+    $.ajax({
+        url: "Tools/teacher/my_tutoring.php",
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                $('#secondary_container').html(data);
+            }, wait);
+        },
+    });
+}
+
+
+function open_tutoring_teacher(id_tutoring) {
+
+    let Data = {
+        "id_tutoring": id_tutoring
+    }
+    $.ajax({
+        url: "Tools/teacher/open_tutoring_teacher.php",
+        data: Data,
+        type: 'POST',
+        beforeSend: function() {
+            $('#secondary_container').html("<img src='IMG/loding.gif'/>");
+        },
+        success: function(data) {
+            setTimeout(function() {
+                $('#secondary_container').html(data);
+            }, wait);
+        },
+    });
+}

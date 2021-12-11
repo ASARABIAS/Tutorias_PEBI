@@ -15,6 +15,7 @@
             <h3><?php echo ($_SESSION['usuario']['name']); ?></h3><img src="IMG/usuario.png" alt="" width="25px" height="25px">
           </div>
         </li>
+        <li><a href="Tools/Backend/sing_off.php"><img src="IMG/cerrar-sesion.png" alt="" style="padding: 0px !important;" ></a></li>
       <?php
       }
       ?>
