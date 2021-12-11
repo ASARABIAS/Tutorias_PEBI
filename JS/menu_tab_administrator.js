@@ -25,7 +25,7 @@ function new_tutoria() {
         },
         success: function(data) {
             setTimeout(function() {
-                alert(data);
+
             }, wait);
         },
     });
@@ -393,4 +393,11 @@ function register_requeriment(id_request_tutoring) {
         },
     });
     Opciones(3);
+}
+
+
+//
+
+function ver_programas() {
+
 }

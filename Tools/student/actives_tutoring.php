@@ -6,7 +6,7 @@ $id_user = $_SESSION['usuario']['id_user'];
 $student = $conn->query("SELECT * FROM `student` WHERE `id_user` LIKE '$id_user'")->fetch_assoc();
 
 $id_career=$student['id_career'];
-$id_student=$student['id_career'];
+$id_student=$student['id'];
 
 $result = $conn->query("SELECT * FROM `course` WHERE `id_career` LIKE '$id_career'");
 while ($row = $result->fetch_assoc()) {
