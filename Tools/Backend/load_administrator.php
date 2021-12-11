@@ -8,7 +8,7 @@ if (isset($_SESSION['usuario'])) {
   $name_career = $_POST['name_career'];
   $codigo = $_POST['snies'];
   $id_login = $_SESSION['id_user'];
- 
+
   //add asignatura
   $name_course = $_POST['name_course'];
   $id_carrera = $_POST['programas'];
@@ -50,16 +50,16 @@ if (isset($_SESSION['usuario'])) {
 
       $sq = "INSERT INTO user(id,email,password) VALUES (default,'$emailc', '$passwordc')";
       if (mysqli_query($conn, $sq)) {
-        $us = $conn->query("SELECT * FROM user WHERE `email` LIKE '$emailc' ");
-        $idc = $us->fetch_assoc()['id'];
-        $sql = "INSERT INTO teacher(id,identificacion,name,id_user) VALUES (default,'$idenc'.'$nombrec', '$idc')";
-        if (mysqli_query($conn, $sql)) {
-          header("location:../../administrator.php");
-        } else {
-          echo "Error: " . $sq . "<br>" . mysqli_error($conn);
-        }
       } else {
         echo "Error: " . $sq . "<br>" . mysqli_error($conn);
+      }
+      $us = $conn->query("SELECT * FROM user WHERE `email` LIKE '$emailc' ");
+      $idc = $us->fetch_assoc()['id'];
+      $sql = "INSERT INTO teacher(id,identificacion,name,id_user) VALUES (default,'$idenc'.'$nombrec', '$idc')";
+      if (mysqli_query($conn, $sql)) {
+        header("location:../../administrator.php");
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
     } else if ($rol == "estudiante") {
       $sq = "INSERT INTO user(id,email,password) VALUES (default,'$emailc', '$passwordc')";
