@@ -13,18 +13,18 @@ function new_tutoria() {
         "docentes": document.getElementById("docentes").value,
         "link": document.getElementById("link").value,
         "salon": document.getElementById("salon").value,
-        "asig_tutoring": document.getElementById("asig_tutoring").value,
+        "asig_tutoring": document.getElementById("lista2").value,
     }
 
     $.ajax({
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -43,11 +43,11 @@ function new_programa() {
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -66,11 +66,11 @@ function new_asignatura() {
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -94,11 +94,11 @@ function new_estudiante_docente() {
         url: "Tools/Backend/load_administrator.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -121,11 +121,11 @@ function new_estudiante_us_tutoria(name) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -142,11 +142,11 @@ function new_estudiante_a_tutoria(name, id) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -163,11 +163,11 @@ function editar_tutoria(name) {
         url: "Tools/Backend/edit_tutoring.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -183,11 +183,11 @@ function solicitudes_tutoria(name) {
         url: "Tools/administrator/request_tutoring.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista2').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
                 $('#vista2').html(data);
             }, wait);
         },
@@ -204,11 +204,11 @@ function aprobar(id, idt, name) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -225,11 +225,11 @@ function eliminar_estudiante(name, id) {
         url: "Tools/Backend/load_administrator_student.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
@@ -237,68 +237,14 @@ function eliminar_estudiante(name, id) {
     activas(name);
 }
 
-function ver_programas() {
-
-    $.ajax({
-        url: "Tools/administrator/programas_tracing.php",
-        type: 'POST',
-        beforeSend: function () {
-            $('#tracing').html("<img src='IMG/loding.gif'/>");
-        },
-        success: function (data) {
-            setTimeout(function () {
-                $('#tracing').html(data);
-            }, wait);
-        },
-    });
-}
-function ver_cursos(id) {
-
-    let Data = {
-        "idcarrer": id,
-    }
-    $.ajax({
-        url: "Tools/administrator/cursos_tracing.php",
-        data: Data,
-        type: 'POST',
-        beforeSend: function () {
-            $('#tracing2').html("<img src='IMG/loding.gif'/>");
-        },
-        success: function (data) {
-            setTimeout(function () {
-                $('#tracing2').html(data);
-            }, wait);
-        },
-    });
-}
-
-function ver_tutorias(id) {
-
-    let Data = {
-        "idcu": id,
-    }
-    $.ajax({
-        url: "Tools/administrator/tutorias_tracing.php",
-        data: Data,
-        type: 'POST',
-        beforeSend: function () {
-            $('#tracing3').html("<img src='IMG/loding.gif'/>");
-        },
-        success: function (data) {
-            setTimeout(function () {
-                $('#tracing3').html(data);
-            }, wait);
-        },
-    });
-}
 function Opciones(index) {
     $.ajax({
         url: "Tools/administrator/" + menu_tab(index),
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
                 $('#vista').html(data);
             }, wait);
         },
@@ -323,8 +269,6 @@ function menu_tab(index) {
             return "new_tutoring.php";
         case 2:
             return "request_tutoring.php";
-        case 3:
-            return "tracing.php";
         case 4:
             return "requirement.php";
         case 5:
@@ -333,12 +277,13 @@ function menu_tab(index) {
     }
 
 }
+
 function rever() {
     $.ajax({
         url: "Tools/administrator/buscar.php",
         type: "POST",
         data: "palabra=" + $('#palabraa').val(),
-        success: function (r) {
+        success: function(r) {
             $('#ver').html(r);
         }
     });
@@ -349,7 +294,7 @@ function recargarLista() {
         url: "Tools/Backend/cargaroptions_administrator.php",
         type: "POST",
         data: "carrera=" + $('#lista1').val(),
-        success: function (r) {
+        success: function(r) {
             $('#select2lista').html(r);
         }
     });
@@ -360,11 +305,11 @@ function activas(name) {
         url: "Tools/administrator/tutoring.php",
         type: 'POST',
         data: "nombre_tutoria=" + name,
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (r) {
-            setTimeout(function () {
+        success: function(r) {
+            setTimeout(function() {
                 $('#vista').html(r);
             }, wait);
         },
@@ -372,22 +317,6 @@ function activas(name) {
 
 }
 
-function activas2(name) {
-    $.ajax({
-        url: "Tools/administrator/tutoring.php",
-        type: 'POST',
-        data: "nombre_tutoria=" + name,
-        beforeSend: function () {
-            $('#tracing4').html("<img src='IMG/loding.gif'/>");
-        },
-        success: function (r) {
-            setTimeout(function () {
-                $('tracing4').html(r);
-            }, wait);
-        },
-    });
-
-}
 function Opciones_administrator(index) {
     urln = "";
     switch (index) {
@@ -395,11 +324,11 @@ function Opciones_administrator(index) {
             $.ajax({
                 url: "Tools/administrator/" + urln + ".php",
                 type: 'POST',
-                beforeSend: function () {
+                beforeSend: function() {
                     $('#vista').html("<img src='IMG/loding.gif'/>");
                 },
-                success: function (data) {
-                    setTimeout(function () {
+                success: function(data) {
+                    setTimeout(function() {
                         $('#vista').html(data);
                     }, wait);
                 },
@@ -421,11 +350,11 @@ function Opciones_administrator(index) {
     $.ajax({
         url: "Tools/administrator/" + urln + ".php",
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
                 $('#vista').html(data);
             }, wait);
         },
@@ -438,7 +367,7 @@ function administrator() {
 
 function validarForm(formulario) {
     if (formulario.palabra.value.length == 0) { //¿Tiene 0 caracteres?
-        formulario.palabra.focus();  // Damos el foco al control
+        formulario.palabra.focus(); // Damos el foco al control
         alert('Debes rellenar este campo'); //Mostramos el mensaje
         return false;
     } //devolvemos el foco  
@@ -454,14 +383,21 @@ function register_requeriment(id_request_tutoring) {
         url: "Tools/Backend/register_request.php",
         data: Data,
         type: 'POST',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#vista').html("<img src='IMG/loding.gif'/>");
         },
-        success: function (data) {
-            setTimeout(function () {
+        success: function(data) {
+            setTimeout(function() {
 
             }, wait);
         },
     });
     Opciones(3);
+}
+
+
+//
+
+function ver_programas() {
+
 }

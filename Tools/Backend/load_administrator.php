@@ -8,7 +8,7 @@ if (isset($_SESSION['usuario'])) {
   $name_career = $_POST['name_career'];
   $codigo = $_POST['snies'];
   $id_login = $_SESSION['id_user'];
- 
+
   //add asignatura
   $name_course = $_POST['name_course'];
   $id_carrera = $_POST['programas'];
@@ -30,6 +30,7 @@ if (isset($_SESSION['usuario'])) {
   $link = $_POST['link'];
   $salon = $_POST['salon'];
 
+  
   if (isset($name_career)) {
     $sql = "INSERT INTO career(id,snies,name,id_administrator) VALUES (default,'$codigo','$name_career', '$id_login')";
 
@@ -52,7 +53,7 @@ if (isset($_SESSION['usuario'])) {
       if (mysqli_query($conn, $sq)) {
         $us = $conn->query("SELECT * FROM user WHERE `email` LIKE '$emailc' ");
         $idc = $us->fetch_assoc()['id'];
-        $sql = "INSERT INTO teacher(id,identificacion,name,id_user) VALUES (default,'$idenc'.'$nombrec', '$idc')";
+        $sql = "INSERT INTO teacher(id,identificacion,name,id_user) VALUES (default,'$idenc','$nombrec', '$idc')";
         if (mysqli_query($conn, $sql)) {
           header("location:../../administrator.php");
         } else {
@@ -77,10 +78,10 @@ if (isset($_SESSION['usuario'])) {
       }
     }
   } else if (isset($nombret)) {
-    echo "entro";
-    $sql = "INSERT INTO tutoring(id,name,description,id_teacher,id_course) VALUES (default,'$nombret','$descriptiont', '$id_docentet','$id_courset')";
+    
+    //$sql = "INSERT INTO tutoring(id,name,description,id_teacher,id_course) VALUES (default,'$nombret','$descriptiont', '$id_docentet','$id_courset')";
+    $sql="INSERT INTO `tutoring`(`id`, `name`, `description`, `id_teacher`, `id_course`) VALUES ('null','$nombret','$descriptiont','$id_docentet','$id_courset')";
     if (mysqli_query($conn, $sql)) {
-      header("location:../../administrator.php");
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -90,10 +91,12 @@ if (isset($_SESSION['usuario'])) {
     if (mysqli_query($conn, $sq)) {
       header("location:../../administrator.php");
     } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      echo "Error: " . $sq . "<br>" . mysqli_error($conn);
     }
   }
+
 }
 
 
 mysqli_close($conn);
+
