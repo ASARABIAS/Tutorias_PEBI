@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario'])) {
       if (mysqli_query($conn, $sq)) {
         $us = $conn->query("SELECT * FROM user WHERE `email` LIKE '$emailc' ");
         $idc = $us->fetch_assoc()['id'];
-        $sql = "INSERT INTO teacher(id,identificacion,name,id_user) VALUES (default,'$idenc'.'$nombrec', '$idc')";
+        $sql = "INSERT INTO teacher(id,identificacion,name,id_user) VALUES (default,'$idenc','$nombrec', '$idc')";
         if (mysqli_query($conn, $sql)) {
           header("location:../../administrator.php");
         } else {
