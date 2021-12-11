@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "Msgaray1510";
+$password = "1007369952";
 $database = "tutoriaspebi";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -15,3 +15,4 @@ $conn = mysqli_connect($servername, $username, $password, $database);
     echo "Información del host: " . mysqli_get_host_info($conn) . PHP_EOL;
 }
 */
+
